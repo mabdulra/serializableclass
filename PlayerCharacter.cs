@@ -1,18 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
+/**
+ *	This class only stores save/load player features
+ *	Other aspects (including graphics, names) are not serialized
+ *	This is done to reduce overall file size
+ */
 [System.Serializable]
 public class PlayerCharacter
 {
-	//	Current static ID for player character, used in constructor
-	public static int currentID = 0;
-
-	//	Player character constants
-	public const int WARRIOR	= 1;
-	public const int MAGELINE	= 2;
-	public const int DARKMAGE	= 3;
-	public const int HEALER		= 4;
-
 	//	Attributes of player characters
 	public int id;
 	public int hp;
@@ -23,32 +19,28 @@ public class PlayerCharacter
 	public int mDef;
 	public int costume;
 
-	public PlayerCharacter()
+	public PlayerCharacter(int id)
 	{
-		//	Increment the static ID
-		currentID += 1;
-
-		//	Set the player stats
-		this.id = currentID;
 		int[] stats;
+		this.id = id;
 
 		//	Set initial stats specifically for each character
 		switch(this.id)
 		{
-			case WARRIOR:
+			case C.WARRIOR:
 				stats = new int[]{50,30,30,30,0,15};
 				break;
-			case MAGELING:
+			case C.MAGELING:
 				stats = new int[]{30,10,10,10,5,10};
 				break;
-			case DARKMAGE:
+			case C.DARKMAGE:
 				stats = new int[]{30,20,10,20,10,10};
 				break;
-			case HEALER:
+			case C.HEALER:
 				stats = new int[]{70,50,20,25,5,10};
 				break;
 			default:
-				Debug.Log("UNSUPPORTED ID"+this.id+"PASSED TO PlayerCharacter CONSTRUCTOR");
+				Debug.Log("UNSUPPORTED ID "+this.id+" PASSED TO PlayerCharacter CONSTRUCTOR");
 				stats = new int[]{0,0,0,0,0,0};
 				break;
 		}
@@ -61,7 +53,7 @@ public class PlayerCharacter
 		this.mAtk	= stats[4];
 		this.mDef	= stats[5];
 
-		//	Until costumes are implemented fully, set them to default 0
-		this.costume = 0;
+		//	All characters start in default styled costume
+		this.costume = C.COSTUME_DEFAULT;
 	}
 }
