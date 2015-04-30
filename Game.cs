@@ -6,11 +6,21 @@ public class Game
 {
 	public static Game			current;
 	public PlayerCharacter[]	players;
-	public ItemInventory[]		items;
+	public Item[]				inventory;
 
 	public Game(int time)
 	{
-		players = new PlayerCharacter[4];
-		items	= new ItemInventory[128];
+		//	Allocate arrays with maximum values set
+		players 	= new PlayerCharacter[4];
+		iventory	= new Item[128];
+
+		//	Instantiate players
+		players[0] = new PlayerCharacter(C.WARRIOR);
+		players[1] = new PlayerCharacter(C.MAGELING);
+		players[2] = new PlayerCharacter(C.DARKMAGE);
+		players[3] = new PlayerCharacter(C.HEALER);
+
+		//	Start game with one POTION in inventory
+		items[0] = new Item(C.POTION);
 	}
 }
