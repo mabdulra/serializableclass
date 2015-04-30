@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
+/**
+ *	This class interfaces with Game objects
+ *	Using BinaryFromatter, it writes/reads to/from files
+ */
 public static class SaveLoad
 {
 	private const string SAVEPATH = "/savedGame.bin";
@@ -12,8 +16,8 @@ public static class SaveLoad
 	{
 		Debug.Log("START OF SAVE GAME PROCESS");
 
-		BinaryFormatter bf = new BinaryFormatter();
-		FileStream file = File.Create(Application.persistentDataPath+SAVEPATH);
+		BinaryFormatter bf	= new BinaryFormatter();
+		FileStream file		= File.Create(Application.persistentDataPath+SAVEPATH);
 		bf.Serialize(file, savedGame);
 		file.Close();
 
@@ -27,9 +31,9 @@ public static class SaveLoad
 
 		if( File.Exists(Application.persistentDataPath+SAVEPATH) )
 		{
-			BinaryFormatter bf = new BinaryFormatter();
-			FileStream file = File.Open(Application.persistentDataPath+SAVEPATH, FileMode.Open);
-			Game savedGame = (Game)bf.Deserialize(file);
+			BinaryFormatter bf	= new BinaryFormatter();
+			FileStream file		= File.Open(Application.persistentDataPath+SAVEPATH, FileMode.Open);
+			Game savedGame		= (Game)bf.Deserialize(file);
 			file.Close();
 			Debug.Log("END OF LOAD GAME PROCESS");
 			return savedGame;
