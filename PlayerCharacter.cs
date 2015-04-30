@@ -4,11 +4,14 @@ using System.Collections;
 [System.Serializable]
 public class PlayerCharacter
 {
+	//	Current static ID for player character, used in constructor
+	public static int currentID = 0;
+
 	//	Player character constants
-	public static int WARRIOR	= 1;
-	public static int MAGELINE	= 2;
-	public static int DARKMAGE	= 3;
-	public static int HEALER	= 4;
+	public const int WARRIOR	= 1;
+	public const int MAGELINE	= 2;
+	public const int DARKMAGE	= 3;
+	public const int HEALER		= 4;
 
 	//	Attributes of player characters
 	public int id;
@@ -20,9 +23,13 @@ public class PlayerCharacter
 	public int mDef;
 	public int costume;
 
-	public PlayerCharacter(id)
+	public PlayerCharacter()
 	{
-		this.id = id;
+		//	Increment the static ID
+		currentID += 1;
+
+		//	Set the player stats
+		this.id = currentID;
 		int[] stats;
 
 		//	Set initial stats specifically for each character
