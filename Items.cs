@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 /**
@@ -11,7 +11,6 @@ public class Item
 {
 	//	Attributes of items
 	public int id;
-	public int type;
 	public int count;
 
 	//	By default, when you get a new item you get only one
@@ -21,15 +20,13 @@ public class Item
 		this.id = id;
 		this.count = count;
 
-		//	Set item type and other attributes
+		//	Currently this is blank, but it can expand in the future potentially
 		switch(this.id)
 		{
-			case C.POTION:
-				this.type = C.ITEM_HEALING;
+			case Constants.POTION:
 				break;
 			default:
 				Debug.Log("UNSUPPORTED ID "+this.id+" PASSED TO Item CONSTRUCTOR");
-				this.type = 0;
 				break;
 		}
 	}

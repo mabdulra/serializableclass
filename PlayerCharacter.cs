@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 /**
@@ -27,16 +27,16 @@ public class PlayerCharacter
 		//	Set initial stats specifically for each character
 		switch(this.id)
 		{
-			case C.WARRIOR:
+			case Constants.WARRIOR:
 				stats = new int[]{50,30,30,30,0,15};
 				break;
-			case C.MAGELING:
+			case Constants.MAGELING:
 				stats = new int[]{30,10,10,10,5,10};
 				break;
-			case C.DARKMAGE:
+			case Constants.DARKMAGE:
 				stats = new int[]{30,20,10,20,10,10};
 				break;
-			case C.HEALER:
+			case Constants.HEALER:
 				stats = new int[]{70,50,20,25,5,10};
 				break;
 			default:
@@ -54,6 +54,6 @@ public class PlayerCharacter
 		this.mDef	= stats[5];
 
 		//	All characters start in default styled costume
-		this.costume = C.COSTUME_DEFAULT;
+		this.costume = Constants.COSTUME_DEFAULT;
 	}
 }
